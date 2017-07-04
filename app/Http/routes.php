@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('hotel', function (){
+	return view('hotel/index');
+});
+
+
 Route::group(['prefix' => 'recepcionistas'], function(){
 
 	Route::get('view/{id}',[

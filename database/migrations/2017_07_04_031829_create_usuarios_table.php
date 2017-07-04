@@ -20,6 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('usuario');
             $table->string('pass');
             $table->enum('tipo', ['administrador','recepcionista']);
+            $table->string('slug');
 
             $table->timestamps();
         });
