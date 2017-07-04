@@ -10,8 +10,8 @@ class Cliente extends Model
 
     protected $fillable = ['nombre_cliente','rut_cliente','hora_termino_real_cl'];
 
-    public function habitaciones(){
-    	return $this->hasMany('App\Habitacion');
+    public function pivoteHabit(){
+    	return $this->hasMany('App\pivoteHabit');
     }
 
 
