@@ -3,17 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Usuario extends Model implements SluggableInterface
+class Usuario extends Model
 {
-	use SluggableTrait;
-
-	protected $sluggable = [
-		'build_from' => 'nombre_usuario',
-		'save_to' 	 => 'slug'
-	];
 
     protected $table = "usuarios";
 

@@ -19,11 +19,8 @@ Route::get('hotel', function (){
 	return view('hotel/index');
 });
 
-
-Route::group(['prefix' => 'recepcionistas'], function(){
-
-	Route::get('view/{id}',[
-		'uses' => 'TestController@view'
-	]);
+Route::group(['prefix' => 'admin'], function(){
+	Route::resource('usuarios','UsuariosController');
 
 });
+
