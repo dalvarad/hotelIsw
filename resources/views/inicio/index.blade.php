@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('title', 'Bienvenidos a Hotel Acuerela')
+@section('title', 'Bienvenidos a Hotel Acuerella')
 @section('contenido')
 
 
