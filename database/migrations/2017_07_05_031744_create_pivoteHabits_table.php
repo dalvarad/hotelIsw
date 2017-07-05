@@ -15,8 +15,8 @@ class CreatePivoteHabitsTable extends Migration
         Schema::create('pivotehabits',function(Blueprint $table){
 
             $table->increments('id_reserva');
-            $table->integer('id_us');
-            $table->integer('id_ha');
+            $table->integer('id_us')->unsigned();
+            $table->integer('id_ha')->unsigned();
             $table->date('hora_inicio');
             $table->date('hora_termino');
 
