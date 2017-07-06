@@ -24,7 +24,7 @@
 
 		<p></p>
 		{!! Form::label('tipo', 'Tipo de Usuario') !!}
-		{!! Form::select('tipo', ['' => 'Seleccione un nivel', 'administrador', 'recepcionista'], null, ['class' => 'form-control',  'required']) !!}
+		{!! Form::select('tipo', ['' => 'Seleccione un nivel', 'administrador' => 'administrador', 'recepcionista' => 'recepcionista'], null, ['class' => 'form-control',  'required']) !!}
 
 		<p></p>
 
