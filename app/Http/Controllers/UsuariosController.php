@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Usuario;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UsuarioRequest;
 
 class UsuariosController extends Controller
 {
@@ -24,7 +24,7 @@ class UsuariosController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
     	$user = new Usuario($request->all());
     	$user->pass = bcrypt($request->pass);
