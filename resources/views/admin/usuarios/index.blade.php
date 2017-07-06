@@ -31,6 +31,8 @@
 			@endforeach
 		</tbody>
 	</table>
-	{!! $usuarios->render() !!}
 
+	<div class="text-center">
+		{!! $usuarios->render() !!}
+	</div>
 @endsection
