@@ -32,8 +32,18 @@ Route::get('contacto', function (){
 });
 
 Route::group(['prefix' => 'admin'], function(){
+
+	/*rutas clientes*/
+	Route::resource('clientes','ClienteController');
+	Route::get('clientes/{id}/destroy',[
+		'uses' =>'ClienteController@destroy',
+		'as' => 'admin.clientes.destroy'
+
+		]);
+
 	/*Rutas de Administrador con Usuario*/
 	Route::resource('usuarios','UsuariosController');
+
 	Route::get('usuarios/{id}/destroy', [
 		'uses' => 'UsuariosController@destroy',
 		'as' => 'admin.usuarios.destroy'
@@ -41,11 +51,9 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
-Route::group(['prefix' => 'admin'], function(){
-	Route::resource('clientes','ClienteController');
 
 
-});
+
 
 Route::group(['prefix' => 'recepcionista'],function(){
 	Route::resource('clientes','ClienteController');

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title', 'Hotel Acuarela') | Hotel Acuarela</title>
     <link rel="stylesheet" href="{{asset ('estilos/plugins/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset ('estilos/barra/icoMoon/icono/icono.css') }}">
     <script src="{{asset ('estilos/plugins/jquery-3.2.1.js')}}"></script>
     <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.js')}}"></script>    
 </head>

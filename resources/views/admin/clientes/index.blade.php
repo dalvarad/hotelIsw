@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('admin.template.main')
 
 @section('title', 'Lista de Clientes')
 
@@ -21,7 +21,7 @@
 				<td>{{ $cliente->nombre_cliente }}</td>
 				<td>{{ $cliente->rut_cliente}}</td>
 				<td>{{ $cliente->Hora_termino_real_cl}}</td>
-
+				<td><a href="{{ route('admin.clientes.edit', $cliente->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a> <a href="{{ route('admin.clientes.destroy', $cliente->id) }}" onclick="return confirm('¿Está seguro de eliminar al cliente seleccionado?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
 
 			 </tr>	
 			@endforeach
