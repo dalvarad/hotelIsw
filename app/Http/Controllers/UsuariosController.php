@@ -10,6 +10,7 @@ use App\Http\Requests\UsuarioRequest;
 use Freshwork\ChileanBundle\Rut;
 
 
+
 class UsuariosController extends Controller
 {
 
@@ -46,25 +47,18 @@ class UsuariosController extends Controller
     public function edit($id){
         $user = Usuario::find($id);
         return view('admin.usuarios.edit')->with('user', $user);
-    }
+    }  
 
 
     public function update(Request $request, $id){
         $user = Usuario::find($id);
         
-        if(!RUT::parse($request->rut_usuario)->isValid()){
-            Session::flash('message_danger', "RUT ingresado: $user->rut_usuario no es válido!");
-            return redirect(route('admin.usuarios.edit', $id));
-            
-        }else{
-            $user->nombre_usuario = $request->nombre_usuario;
-            $user->usuario = $request->usuario;
-            $user->tipo = $request->tipo;
-            $user->rut_usuario = RUT::parse($request->rut_usuario)->format(RUT::FORMAT_WITH_DASH);
-            $user->save();
-            Session::flash('message_success', "Se ha modificado el usuario $user->nombre_usuario Exitosamente!");
-            return redirect(route('admin.usuarios.index'));
-        }
+        $this->validate($request,[
+            'rut_usuario' => 'cl_rut'
+        ]);
+        $user->save();
+        Session::flash('message_success', "Se ha modificado el usuario $user->nombre_usuario Exitosamente!");
+        return redirect(route('admin.usuarios.index'));
     }
 
 
