@@ -32,6 +32,7 @@ Route::get('contacto', function (){
 });
 
 Route::group(['prefix' => 'admin'], function(){
+	/*Rutas de Administrador con Usuario*/
 	Route::resource('usuarios','UsuariosController');
 	Route::get('usuarios/{id}/destroy', [
 		'uses' => 'UsuariosController@destroy',
@@ -40,4 +41,18 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
+/*Rutas de Autentificacion*/
+Route::get('admin/auth/login', [
+	'uses' => 'Auth\AuthController@getLogin',
+	'as' => 'admin.auth.login' 
+]);
 
+Route::post('admin/auth/login', [
+	'uses' => 'Auth\AuthController@postLogin',
+	'as' => 'admin.auth.login' 
+]);
+
+Route::get('admin/auth/logout', [
+	'uses' => 'Auth\AuthController@getLogout',
+	'as' => 'admin.auth.logout' 
+]);

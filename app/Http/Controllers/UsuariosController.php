@@ -30,8 +30,13 @@ class UsuariosController extends Controller
     	$user->pass = bcrypt($request->pass);
     	$user->save();
 
-        Session::flash('message_success', "Se ha registrado el usuario $user->usuario Exitosamente!");
+        Session::flash('message_success', "Se ha registrado el usuario $user->nombre_usuario Exitosamente!");
         return redirect(route('admin.usuarios.index'));
+    }
+
+    public function show($id)
+    {
+        //
     }
 
     public function edit($id){
@@ -48,7 +53,7 @@ class UsuariosController extends Controller
 
         $user->save();
 
-        Session::flash('message_success', "Se ha modificado el usuario $user->usuario Exitosamente!");
+        Session::flash('message_success', "Se ha modificado el usuario $user->nombre_usuario Exitosamente!");
         return redirect(route('admin.usuarios.index'));
     }
 
@@ -56,7 +61,7 @@ class UsuariosController extends Controller
         $user = Usuario::find($id);
         $user->delete();
 
-        Session::flash('message_danger', "Se ha eliminado el usuario $user->name Exitosamente!");
+        Session::flash('message_danger', "Se ha eliminado el usuario $user->nombre_usuario Exitosamente!");
         return redirect(route('admin.usuarios.index'));
     }
 }
