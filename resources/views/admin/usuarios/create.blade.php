@@ -4,16 +4,6 @@
 
 @section('contenido')
 
-	@if(count($errors) > 0)
-		<div class="alert alert-danger" role="alert">
-			<ul>
-				@foreach($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
-
 	{!! Form::open(['route' => 'admin.usuarios.store', 'method' => 'POST']) !!}
 
 
@@ -29,12 +19,16 @@
 		{!! Form::text('usuario', null, ['class' => 'form-control', 'placeholder' => 'Rarami', 'required']) !!}
 
 		<p></p>
-		{!! Form::label('pass', 'Contraseña Usuario') !!}
+		{!! Form::label('pass_confirmation', 'Contraseña Usuario') !!}
+		{!! Form::password('pass_confirmation',['class' => 'form-control', 'placeholder' => '********', 'required']) !!}
+
+		<p></p>
+		{!! Form::label('pass', 'Confirmar Contraseña') !!}
 		{!! Form::password('pass',['class' => 'form-control', 'placeholder' => '********', 'required']) !!}
 
 		<p></p>
 		{!! Form::label('tipo', 'Tipo de Usuario') !!}
-		{!! Form::select('tipo', ['' => 'Seleccione un nivel', 'administrador' => 'administrador', 'recepcionista' => 'recepcionista'], null, ['class' => 'form-control',  'required']) !!}
+		{!! Form::select('tipo', ['' => 'Seleccione un nivel', 'administrador' => 'Administrador', 'recepcionista' => 'Recepcionista'], null, ['class' => 'form-control',  'required']) !!}
 
 		<p></p>
 
