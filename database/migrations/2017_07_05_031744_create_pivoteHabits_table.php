@@ -17,8 +17,8 @@ class CreatePivoteHabitsTable extends Migration
             $table->increments('id');
             $table->integer('id_us')->unsigned();
             $table->integer('id_ha')->unsigned();
-            $table->date('hora_inicio');
-            $table->date('hora_termino');
+            $table->datetime('hora_inicio');
+            $table->datetime('hora_termino');
 
             $table->foreign('id_us')->references('id')->on('usuarios')->onDelete('cascade');
             $table->foreign('id_ha')->references('id')->on('habitaciones')->onDelete('cascade');

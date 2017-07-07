@@ -17,7 +17,7 @@ class CreateClientesTable extends Migration
             $table->increments('id');
             $table->string('nombre_cliente');
             $table->string('rut_cliente');
-            $table->date('hora_termino_real_cl');
+            $table->datetime('hora_termino_real_cl');
             $table->timestamps();
         });
     }

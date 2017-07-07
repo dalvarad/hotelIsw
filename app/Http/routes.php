@@ -41,6 +41,19 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
+Route::group(['prefix' => 'admin'], function(){
+	Route::resource('clientes','ClienteController');
+
+
+});
+
+Route::group(['prefix' => 'recepcionista'],function(){
+	Route::resource('clientes','ClienteController');
+
+});
+
+
+
 /*Rutas de Autentificacion*/
 Route::get('admin/auth/login', [
 	'uses' => 'Auth\AuthController@getLogin',
@@ -56,3 +69,5 @@ Route::get('admin/auth/logout', [
 	'uses' => 'Auth\AuthController@getLogout',
 	'as' => 'admin.auth.logout' 
 ]);
+
+
