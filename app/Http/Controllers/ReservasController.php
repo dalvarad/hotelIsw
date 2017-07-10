@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class PivoteHabitController extends Controller
+class ReservasController extends Controller
 {
     //
 }

@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\cliente;
-use App\Http\Requests\UsuarioRequest;
+use App\Cliente;
 use Freshwork\ChileanBundle\Rut;
 use Illuminate\Support\Facades\Session;
 

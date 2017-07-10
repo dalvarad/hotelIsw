@@ -29,6 +29,6 @@ class CreateClientesTable extends Migration
      */
     public function down()
     {
-        schema::drop('clientes'); 
+        Schema::drop('clientes'); 
     }
 }

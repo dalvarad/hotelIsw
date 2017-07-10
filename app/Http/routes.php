@@ -41,12 +41,11 @@ Route::group(['prefix' => 'admin'], function(){
 
 		]);
 
-	/*Rutas de Administrador con Usuario*/
-	Route::resource('usuarios','UsuariosController');
-
-	Route::get('usuarios/{id}/destroy', [
-		'uses' => 'UsuariosController@destroy',
-		'as' => 'admin.usuarios.destroy'
+	/*rutas users*/
+	Route::resource('users','UsersController');
+	Route::get('users/{id}/destroy', [
+		'uses' => 'UsersController@destroy',
+		'as' => 'admin.users.destroy'
 	]);
 
 });
