@@ -23,10 +23,12 @@ Route::get('hotel', function (){
 	return view('hotel/index');
 });
 
-Route::get('habitaciones', function (){
-	return view('habitaciones/index');
-});
+Route::get('habitaciones',[
+	'as'   => 'habitaciones.index',
+	'uses' => 'DatosController@index' 
+]);
 
+/*Usa el controlador DatosController para mostrar datos de las habitaciones en la base de datos*/
 Route::get('contacto', function (){
 	return view('contacto/index');
 });
@@ -48,6 +50,13 @@ Route::group(['prefix' => 'admin'], function(){
 		'as' => 'admin.users.destroy'
 	]);
 
+	/*rutas habitaciones*/
+	Route::resource('habitaciones','HabitacionesController');
+	Route::get('habitaciones/{id}/destroy', [
+		'uses' => 'HabitacionesController@destroy',
+		'as' => 'admin.habitaciones.destroy'
+	]);
+
 });
 
 
@@ -59,22 +68,6 @@ Route::group(['prefix' => 'recepcionista'],function(){
 
 });
 
+Route::auth();
 
-
-/*Rutas de Autentificacion*/
-Route::get('admin/auth/login', [
-	'uses' => 'Auth\AuthController@getLogin',
-	'as' => 'admin.auth.login' 
-]);
-
-Route::post('admin/auth/login', [
-	'uses' => 'Auth\AuthController@postLogin',
-	'as' => 'admin.auth.login' 
-]);
-
-Route::get('admin/auth/logout', [
-	'uses' => 'Auth\AuthController@getLogout',
-	'as' => 'admin.auth.logout' 
-]);
-
-
+Route::get('/home', 'HomeController@index');

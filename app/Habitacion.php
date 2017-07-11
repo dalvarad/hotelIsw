@@ -13,4 +13,9 @@ class Habitacion extends Model
    public function pivoteHabit(){
    		return $this->hasOne('App\PivoteHabit');
    }
+
+   public function scopeSearch($query, $tipo_de_habitacion){
+
+		return $query->where('tipo_de_habitacion', 'LIKE', "%$tipo_de_habitacion%");
+	}
 }

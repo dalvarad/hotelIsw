@@ -2,11 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'Hotel Acuarela') | Hotel Acuarela</title>
+    <title>@yield('title', 'Hotel Acuarella') | Hotel Acuarella</title>
     <link rel="stylesheet" href="{{asset ('estilos/plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset ('estilos/barra/icoMoon/icono/icono.css') }}">
-    <script src="{{asset ('estilos/plugins/jquery-3.2.1.js')}}"></script>
-    <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.js')}}"></script>    
+    <link rel="stylesheet" href="{{ asset ('estilos/barra/icoMoon/usuario/usuario.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url("fondo/guestBg.jpg");
+            background-color: #C4D4EA;
+        }
+    </style>
 </head>
     <body>
         
@@ -48,6 +55,9 @@
         <div class="panel panel-footer" align="center">
             @include('template.partials.footer')
         </div>   
-               
+        
+        <script src="{{asset ('estilos/plugins/jquery-3.2.1.js')}}"></script>
+        <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.js')}}"></script> 
+        <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.min.js')}}"></script> 
     </body>
 </html>
