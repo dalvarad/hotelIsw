@@ -33,7 +33,12 @@ Route::get('contacto', function (){
 	return view('contacto/index');
 });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+
+	Route::get('/', ['as' => 'admin.index', function (){
+		return view('welcome');
+
+	}]);
 
 	/*rutas clientes*/
 	Route::resource('clientes','ClienteController');
