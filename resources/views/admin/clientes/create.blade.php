@@ -1,9 +1,8 @@
-@extends('admin.template.main')
+@extends('welcome')
 
 @section('title', 'Crear Cliente')
 
 @section('contenido')
-
 	{!! Form::open(['route' => 'admin.clientes.store', 'method' => 'POST']) !!}
 	
 	{!! Form::label('nombre_cliente', 'Nombre del Cliente') !!}
@@ -23,6 +22,4 @@
 
 
 	{!! Form::close() !!}
-
-
 @endsection

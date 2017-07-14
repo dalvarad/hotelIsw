@@ -13,9 +13,10 @@
      @if(Auth::user())
             <ul class="nav navbar-nav navbar-center">
                 <li><a href="{{url('home')}}"><span class="icon-home3"></span> Inicio</a></li>
-                <li><a href="{{url('admin/users')}}"><span class="icon-user">Usuarios</span></a></li>
                 <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
+                <li><a href="{{url('admin/users')}}"><span class="icon-user">Usuarios</span></a></li>
                 <li><a href="{{url('admin/habitaciones')}}"><span class="icon-briefcase"></span> Habitaciones</a></li>
+                <li><a href="{{url('admin/clientes')}}"><span class="icon-user-tie">Clientes</span></a></li>
                 <li><a href="{{url('quienessomos')}}"><span class="icon-earth"></span> ¿Quiénes somos?</a></li>    
             </ul>
       @else

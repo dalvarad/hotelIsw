@@ -1,4 +1,4 @@
-@extends('admin.template.main')
+@extends('welcome')
 
 @section('title', 'Editar Habitación Nº' . $habitacion->id)
 

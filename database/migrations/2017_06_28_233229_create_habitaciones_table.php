@@ -17,7 +17,7 @@ class CreateHabitacionesTable extends Migration
             $table->increments('id');
             $table->integer('valor');
             $table->enum('estado', ['ocupada','desocupada'])->default('desocupada');
-            $table->enum('tipo_de_habitacion', ['single','matrimonial', 'double'])->default('single');
+            $table->enum('tipo_de_habitacion', ['single','doble', 'triple'])->default('single');
 
             $table->timestamps();
         });
