@@ -16,6 +16,7 @@
                 <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
                 <li><a href="{{url('admin/users')}}"><span class="icon-user">Usuarios</span></a></li>
                 <li><a href="{{url('admin/habitaciones')}}"><span class="icon-briefcase"></span> Habitaciones</a></li>
+                <li><a href="{{url('admin/reservas')}}"><span class="glyphicon glyphicon-time"></span> Reservas</a></li>
                 <li><a href="{{url('admin/clientes')}}"><span class="icon-user-tie">Clientes</span></a></li>
                 <li><a href="{{url('quienessomos')}}"><span class="icon-earth"></span> ¿Quiénes somos?</a></li>    
             </ul>

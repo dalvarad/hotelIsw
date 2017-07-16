@@ -62,11 +62,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		'as' => 'admin.habitaciones.destroy'
 	]);
 
+	/*rutas reservas*/
+	Route::resource('reservas', 'ReservasController');
+
 });
-
-
-
-
 
 Route::group(['prefix' => 'recepcionista'],function(){
 	Route::resource('clientes','ClienteController');

@@ -30,7 +30,7 @@
 		<tbody>
 			@foreach($habitaciones as $habitacion)
 				<tr>
-					<td><h4>{{ $habitacion->valor }}</h4></td>
+					<td><h4>${{ $habitacion->valor }}</h4></td>
 					<td>
 						@if($habitacion->tipo_de_habitacion == "single")
 							<h4><span class="label label-success">{{ $habitacion->tipo_de_habitacion }}</span></h4>
