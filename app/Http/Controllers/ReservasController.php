@@ -7,26 +7,40 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ReservaRequest;
 use App\Reserva;
+use App\User;
+use App\Habitacion;
+use App\Cliente;
 use Illuminate\Support\Facades\Session;
 use DB;
+
 
 class ReservasController extends Controller
 {
 	public function index()
-	{
-		$reservas = DB::table('reservas')
+    {
+        $reservas = DB::table('reservas')
 
                     ->join('users', 'users.id', '=', 'reservas.id_us')
                     ->join('habitaciones', 'habitaciones.id', '=', 'reservas.id_ha')
                     ->join('clientes', 'clientes.id', '=', 'reservas.id_cl')
 
-                    ->select('users.name', 'habitaciones.id', 'habitaciones.valor', 'reserva_comienza', 'reserva_termina', 'clientes.nombre_cliente')
-                    ->orderBy('id','DESC')
+                    ->select('reservas.*', 'users.name', 'habitaciones.valor', 'clientes.nombre_cliente')
+                    ->orderBy('reservas.id','DESC')
                     ->get();
 
+        /*$consulta2 = DB::table('reservas')
 
-		return view('admin.reservas.index')->with('reservas', $reservas);
-	}
+                    ->join('users', 'users.id', '=', 'reservas.id_us')
+                    ->join('habitaciones', 'habitaciones.id', '=', 'reservas.id_ha')
+                    ->join('clientes', 'clientes.id', '=', 'reservas.id_cl')
+
+                    ->select('reservas.id', 'reserva_comienza', 'reserva_termina')
+                    ->orderBy('id','DESC')
+                    ->get();*/
+        
+
+        return view('admin.reservas.index')->with('reservas', $reservas);
+    }
 
 	public function create()
 	{
