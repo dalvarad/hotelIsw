@@ -69,4 +69,46 @@ class ReservasController extends Controller
 		Session::flash('message_success', "Se ha registrado la reserva Nº $reservas->id Existosamente!");
         return redirect(route('admin.reservas.index'));
 	}
+
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit($id)
+    {
+        $reservas = Reserva::find($id);
+
+        $lista_habitaciones = DB::table('habitaciones')
+                            ->where('estado','desocupada')
+                            ->orderBy('valor')
+                            ->lists('valor', 'id');
+
+        $lista_clientes = DB::table('clientes')
+                         ->orderBy('rut_cliente')
+                         ->lists('rut_cliente', 'id');
+
+
+        
+        return view('admin.reservas.edit')->with('reservas', $reservas)->with('lista_habitaciones', $lista_habitaciones)->with('lista_clientes', $lista_clientes);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $reservas = Reserva::find($id);
+        $reservas->fill($request->all());
+        $reservas->save();
+
+        Session::flash('message_success', "Se ha modificado la reserva $reservas->id Exitosamente!");
+        return redirect(route('admin.reservas.index'));
+    }
+
+    public function destroy($id)
+    {
+        $reserva = Reserva::find($id);
+        $reserva->delete();
+
+        Session::flash('message_danger', "Se ha eliminado la reserva $reserva->id Exitosamente!");
+        return redirect(route('admin.reservas.index'));
+    }
 }

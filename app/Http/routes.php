@@ -64,6 +64,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 	/*rutas reservas*/
 	Route::resource('reservas', 'ReservasController');
+	Route::get('reservas/{id}/destroy', [
+		'uses' => 'ReservasController@destroy',
+		'as' => 'admin.reservas.destroy'
+	]);
 
 });
 
