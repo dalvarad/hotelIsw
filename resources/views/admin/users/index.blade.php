@@ -6,6 +6,7 @@
 
 	<div align="center">
 		<a href="{{ route('admin.users.create') }}" class="btn btn-info">Registrar nuevo usuario</a>
+	
 	</div>
 	<p></p>
 	<table class="table table-striped">
@@ -39,6 +40,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	
 
 	<div align="center">
 			{!! $users->render() !!}

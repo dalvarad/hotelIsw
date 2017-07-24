@@ -28,6 +28,13 @@ Route::get('habitaciones',[
 	'uses' => 'DatosController@index' 
 ]);
 
+/*Generador PDF*/
+Route::get('pdf',function(){
+		$users = App\User::all();
+		$pdf = PDF::loadView('admin/users/pdf', ['users' => $users]);
+		return $pdf->download('archivo.pdf');
+});
+
 /*Usa el controlador DatosController para mostrar datos de las habitaciones en la base de datos*/
 Route::get('contacto', function (){
 	return view('contacto/index');
@@ -39,6 +46,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		return view('welcome');
 
 	}]);
+
+
 
 	/*rutas clientes*/
 	Route::resource('clientes','ClienteController');
@@ -68,6 +77,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		'uses' => 'ReservasController@destroy',
 		'as' => 'admin.reservas.destroy'
 	]);
+
+
+	
 
 });
 

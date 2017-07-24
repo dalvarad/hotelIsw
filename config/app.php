@@ -156,6 +156,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
         * Providers Personales
         */
@@ -216,7 +217,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
-        'Rut'   => Freshwork\ChileanBundle\Laravel\Facades\Rut::class
+        'Rut'   => Freshwork\ChileanBundle\Laravel\Facades\Rut::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
