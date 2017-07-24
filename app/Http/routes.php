@@ -54,8 +54,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 	Route::get('clientes/{id}/destroy',[
 		'uses' =>'ClienteController@destroy',
 		'as' => 'admin.clientes.destroy'
-
-		]);
+	]);
+	Route::get('pdfclientes',function(){
+		$cliente = App\Cliente::all();
+		$pdf = PDF::loadView('admin.clientes.pdf', ['cliente' => $cliente]);
+		return $pdf->download('clientes.pdf');
+	});
 
 	/*rutas users*/
 	Route::resource('users','UsersController');
@@ -77,11 +81,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		'uses' => 'ReservasController@destroy',
 		'as' => 'admin.reservas.destroy'
 	]);
+	Route::get('pdfreservas',function(){
+		$reservas = DB::table('reservas')
 
+                    ->join('users', 'users.id', '=', 'reservas.id_us')
+                    ->join('habitaciones', 'habitaciones.id', '=', 'reservas.id_ha')
+                    ->join('clientes', 'clientes.id', '=', 'reservas.id_cl')
 
-	
-
+                    ->select('reservas.*', 'users.name', 'habitaciones.valor', 'clientes.nombre_cliente')
+                    ->orderBy('reservas.id','DESC')
+                    ->get();
+		$pdf = PDF::loadView('admin.reservas.pdf', ['reservas' => $reservas]);
+		return $pdf->download('reservas.pdf');
+	});
 });
+/*FIN RUTAS ADMINISTRADOR*/
 
 Route::group(['prefix' => 'recepcionista'],function(){
 	Route::resource('clientes','ClienteController');

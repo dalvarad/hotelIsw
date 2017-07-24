@@ -5,6 +5,7 @@
 @section('contenido')
 	<div align="center">
 		<a href="{{ route('admin.reservas.create') }}" class="btn btn-info"> Registrar Reserva</a>
+        <a href="{{ url('admin/pdfreservas') }}" class="btn btn-danger"><span class="glyphicon glyphicon-save-file">pdf</span></a>
 	</div>
 	<p></p>
 

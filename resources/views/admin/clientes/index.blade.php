@@ -5,6 +5,7 @@
 @section('contenido')
 
 	<a href="{{ route('admin.clientes.create') }}" class="btn btn-info">Registrar nuevo cliente</a>
+	<a href="{{ url('admin/pdfclientes') }}" class="btn btn-danger"><span class="glyphicon glyphicon-save-file">pdf</span></a>
 	<p></p>
 	<table class="table table-striped">
 		<thead>
