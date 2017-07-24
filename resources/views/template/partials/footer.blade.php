@@ -1,7 +1,7 @@
 <footer class="container-fluid text-center bg-lightgray">
     <div class="copyrights" style="margin-top:25px;">
         <p>
-            <span>Diseñado por alumnos de Desarrollo Web</span>
+            <span>Diseñado por alumnos de Ingenieria de Software</span>
             <br>
             <span>Universidad del Bío-Bío </span>
             <br>

@@ -1,6 +1,25 @@
-<h1>Listado de Clientes</h1>
 
-<table>
+<html>
+<head>
+
+<body>
+  <header>
+  <link rel="stylesheet" href="pdfStyle.css">
+    <h1>Hotel Acuarela</h1>
+    <h2>Clientes</h2>
+  </header>
+  <footer>
+   
+         <p class="izq">
+              Hotel Acuarela
+         </p>
+          <p class="page">
+           	 Página
+          </p>
+  
+  </footer>
+  <div id="content">
+   <table id="tabla" style="width:100% ">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -18,3 +37,6 @@
 		@endforeach
 	</tbody>
 </table>
+  </div>
+</body>
+</html>
