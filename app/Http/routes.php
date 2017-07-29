@@ -41,10 +41,10 @@ Route::get('contacto', function (){
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
-
+    
 	Route::get('/', ['as' => 'admin.index', function (){
 		return view('welcome');
-
+    Route::resource('tipo','TipoController');
 	}]);
 
 

@@ -5,23 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
+use App\tipo;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\UserRequest;
 use Freshwork\ChileanBundle\Rut;
+use DB;
 
 
 class UsersController extends Controller
 {
     public function index()
     {
-    	$users = User::orderBy('id', 'ASC')->paginate(10);
+    	$users =  DB::table('users')
+                  ->join('tipo_usuario', 'users.type', '=', 'tipo_usuario.id')
+                  ->select('users.*','tipo_usuario.nombre')
+                  ->orderBy('users.id','DESC')
+                  ->get();
+
+
 
         return view('admin.users.index')->with('users', $users);
     }
 
     public function create()
     {
-    	return view('admin.users.create');
+        $lista_tipo= DB::table('tipo_usuario')
+                     ->orderBy('id')
+                     ->lists('id','nombre');
+    	return view('admin.users.create')->with('lista_tipo',$lista_tipo);
     }
 
     public function store(UserRequest $request)
@@ -29,6 +40,7 @@ class UsersController extends Controller
     	$users = new User($request->all());
     	$users->password = bcrypt($request->password);
         $users->rut = RUT::parse($request->rut)->format(RUT::FORMAT_WITH_DASH);
+        
     	$users->save();
 
         Session::flash('message_success', "Se ha registrado el usuario $users->name Exitosamente!");

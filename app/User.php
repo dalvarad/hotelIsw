@@ -15,6 +15,10 @@ class User extends Authenticatable
     ];
 
     public function reserva(){
-        return $this->hasMany('App\Reserva');
+    return $this->hasMany('App\Reserva');
     }
+
+    public function tipo_usuario(){
+   	return $this->belongsTo('App\Tipo');
+   }
 }
