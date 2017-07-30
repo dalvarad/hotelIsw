@@ -25,11 +25,11 @@
 					<td>{{ $user->email }}</td>
 					<td>
 						@if($user->type == "1")
-							<span class="label label-danger">{{ $user->type }}</span>
+							<span class="label label-danger">{{ $user->nombre }}</span>
 						@elseif($user->type == "2")
-							<span class="label label-info">{{ $user->type }}</span>
+							<span class="label label-info">{{ $user->nombre }}</span>
 						@else
-							<span class="label label-primary">{{ $user->type }}</span>
+							<span class="label label-primary">{{ $user->nombre }}</span>
 						@endif	
 					</td>
 					<td>
