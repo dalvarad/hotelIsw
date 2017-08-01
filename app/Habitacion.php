@@ -8,14 +8,21 @@ class Habitacion extends Model
 {
    protected $table = "habitaciones";
 
-   protected $fillable = ['valor','estado','tipo_de_habitacion'];
+   protected $fillable = ['id_tipo', 'id_estado', 'numero'];
 
-   public function pivoteHabit(){
-   		return $this->hasOne('App\Reserva');
+   public function estadohabitacion(){
+   		return $this->belongsTo('App\Estadohabitacion');
    }
 
+   public function tipohabitacion(){
+   		return $this->belongsTo('App\Tipohabitacion');
+   }
+
+/*
    public function scopeSearch($query, $tipo_de_habitacion){
 
-		return $query->where('tipo_de_habitacion', 'LIKE', "%$tipo_de_habitacion%");
+		return $query->where(, 'LIKE', "%$tipo_de_habitacion%");
 	}
+*/
+	
 }

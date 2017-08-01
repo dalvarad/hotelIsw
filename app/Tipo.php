@@ -10,8 +10,6 @@ class tipo extends Model
 
     protected $fillable = ['nombre'];
 
-    protected $Hidden = ['id'];
-
     public function user(){
     return $this->hasMany('App\User');
 	}

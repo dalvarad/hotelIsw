@@ -7,16 +7,16 @@
 	{!! Form::open(['route' => 'admin.habitaciones.store', 'method' => 'POST']) !!}
 
 		<p></p>
-		{!! Form::label('valor', 'Valor Habitación') !!}
-		{!! Form::number('valor', null, ['class' => 'form-control', 'placeholder' => '35.000', 'required']) !!}
+		{!! Form::label('id_tipo', 'Tipo Habitación') !!}
+		{!! Form::select('id_tipo', [$lista_tipo], null,['class' => 'form-control', 'placeholder' => 'single, doble, triple...', 'required']) !!}
 
 		<p></p>
-		{!! Form::label('estado', 'Estado Habitación') !!}
-		{!! Form::select('estado', ['' => 'Estado', 'ocupada' => 'Ocupada', 'desocupada' => 'Desocupada'], null, ['class' => 'form-control',  'required']) !!}
+		{!! Form::label('id_estado', 'Estado Habitación') !!}
+		{!! Form::select('id_estado', [$lista_estado], null,['class' => 'form-control',  'required']) !!}
 
 		<p></p>
-		{!! Form::label('tipo_de_habitacion', 'Tipo de Habitación') !!}
-		{!! Form::select('tipo_de_habitacion', ['single' => 'Single', 'matrimonial' => 'Matrimonial', 'double' => 'Double'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opción...' ,'required']) !!}
+		{!! Form::label('numero', 'Número de Habitación') !!}
+		{!! Form::number('numero', null, ['class' => 'form-control', 'placeholder' => '1' ,'required']) !!}
 
 		<p></p>
 		<div align="center">

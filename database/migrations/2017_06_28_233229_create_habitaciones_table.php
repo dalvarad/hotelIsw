@@ -15,9 +15,12 @@ class CreateHabitacionesTable extends Migration
          Schema::create('habitaciones',function(Blueprint $table){
 
             $table->increments('id');
-            $table->integer('valor');
-            $table->enum('estado', ['ocupada','desocupada'])->default('desocupada');
-            $table->enum('tipo_de_habitacion', ['single','doble', 'triple'])->default('single');
+            $table->integer('id_tipo')->unsigned();
+            $table->integer('id_estado')->unsigned();
+            $table->integer('numero');
+
+            $table->foreign('id_tipo')->references('id')->on('tipohabitaciones')->onDelete('cascade');
+            $table->foreign('id_estado')->references('id')->on('estadohabitaciones')->onDelete('cascade');
 
             $table->timestamps();
         });

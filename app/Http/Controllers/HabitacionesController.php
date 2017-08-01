@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Habitacion;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class HabitacionesController extends Controller
 {
@@ -16,7 +17,14 @@ class HabitacionesController extends Controller
      */
     public function index()
     {
-        $habitaciones = Habitacion::orderBy('id', 'ASC')->paginate(10);
+        $habitaciones = DB::table('habitaciones')
+
+                    ->join('tipohabitaciones', 'tipohabitaciones.id', '=', 'habitaciones.id_tipo')
+                    ->join('estadohabitaciones', 'estadohabitaciones.id', '=', 'habitaciones.id_estado')
+
+                    ->select('habitaciones.*', 'tipohabitaciones.descripcion', 'tipohabitaciones.caracteristicas', 'tipohabitaciones.valor', 'tipohabitaciones.type', 'estadohabitaciones.estado')
+                    ->orderBy('habitaciones.id','ASC')
+                    ->get();
 
         return view('admin.habitaciones.index')->with('habitaciones', $habitaciones);
     }
@@ -28,7 +36,18 @@ class HabitacionesController extends Controller
      */
     public function create()
     {
-        return view('admin.habitaciones.create');
+        $lista_tipo = DB::table('tipohabitaciones')
+                            ->orderBy('id')
+                            ->lists('type', 'id' );
+
+
+        $lista_estado = DB::table('estadohabitaciones')
+                    ->orderBy('id')
+                    ->lists('estado', 'id' );
+
+      //  dd($lista_users);
+
+        return view('admin.habitaciones.create')->with('lista_tipo', $lista_tipo)->with('lista_estado',$lista_estado);
     }
 
     /**
@@ -39,10 +58,11 @@ class HabitacionesController extends Controller
      */
     public function store(Request $request)
     {
-        $habitaciones = new Habitacion($request->all());
-        $habitaciones->save();
+        $habitacion = new Habitacion($request->all());
 
-        Session::flash('message_success', "Se ha registrado la Habitacion Nº$habitaciones->id Exitosamente!");
+        $habitacion->save();
+
+        Session::flash('message_success', "Se ha registrado la habitación Nº $habitacion->numero Existosamente!");
         return redirect(route('admin.habitaciones.index'));
     }
 
@@ -65,8 +85,18 @@ class HabitacionesController extends Controller
      */
     public function edit($id)
     {
-        $habitaciones= Habitacion::find($id);
-        return view ('admin.habitaciones.edit')->with('habitacion', $habitaciones);
+        $habitacion = Habitacion::find($id);
+
+        $lista_tipo = DB::table('tipohabitaciones')
+                            ->orderBy('id')
+                            ->lists('type', 'id' );
+
+
+        $lista_estado = DB::table('estadohabitaciones')
+                    ->orderBy('id')
+                    ->lists('estado', 'id' );
+
+        return view('admin.habitaciones.edit')->with('habitacion', $habitacion)->with('lista_tipo', $lista_tipo)->with('lista_estado', $lista_estado);
     }
 
     /**
@@ -78,17 +108,12 @@ class HabitacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $habitaciones = Habitacion::find($id);
+        $habitacion = Habitacion::find($id);
+        $habitacion->fill($request->all());
+        $habitacion->save();
 
-        $habitaciones ->valor = $request->valor;
-        $habitaciones ->estado = $request->estado;
-        $habitaciones ->tipo_de_habitacion = $request->tipo_de_habitacion;
-
-        $habitaciones ->save();
-
-        Session::flash('message_success', "Se ha modificado la habitación Nº$habitaciones->id Exitosamente!!");
+        Session::flash('message_success', "Se ha modificado la habitación $habitacion->numero Exitosamente!");
         return redirect(route('admin.habitaciones.index'));
-
     }
 
     /**
@@ -100,9 +125,9 @@ class HabitacionesController extends Controller
     public function destroy($id)
     {
         $habitacion = Habitacion::find($id);
-        $habitacion-> delete();
+        $habitacion->delete();
 
-        Session::flash('message_danger', "Se ha eliminado la Habitacion Nº$habitacion->id Exitosamente!!");
+        Session::flash('message_danger', "Se ha eliminado la habitacion $habitacion->numero Exitosamente!");
         return redirect(route('admin.habitaciones.index'));
     }
 }
