@@ -15,7 +15,19 @@
                 <li><a href="{{url('home')}}"><span class="icon-home3"></span> Inicio</a></li>
                 <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
                 <li><a href="{{url('admin/users')}}"><span class="icon-user">Usuarios</span></a></li>
-                <li><a href="{{url('admin/habitaciones')}}"><span class="icon-briefcase"></span> Habitaciones</a></li>
+                <li class="dropdown">
+                    <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="icon-briefcase" aria-hidden="true"></span> Habitaciones
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{url('admin/habitaciones')}}">Habitacion</a>
+                            <a href="{{url('admin/tipohabitaciones')}}">Tipo</a>
+                            <a href="{{url('admin/estadohabitaciones')}}">Estado</a>
+                            
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="{{url('admin/reservas')}}"><span class="glyphicon glyphicon-time"></span> Reservas</a></li>
                 <li><a href="{{url('admin/clientes')}}"><span class="icon-user-tie">Clientes</span></a></li>
                 <li><a href="{{url('quienessomos')}}"><span class="icon-earth"></span> ¿Quiénes somos?</a></li>    
