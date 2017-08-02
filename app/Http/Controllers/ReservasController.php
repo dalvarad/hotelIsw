@@ -24,7 +24,7 @@ class ReservasController extends Controller
                     ->join('habitaciones', 'habitaciones.id', '=', 'reservas.id_ha')
                     ->join('clientes', 'clientes.id', '=', 'reservas.id_cl')
 
-                    ->select('reservas.*', 'users.name', 'habitaciones.valor', 'clientes.nombre_cliente')
+                    ->select('reservas.*', 'users.name', 'habitaciones.numero', 'clientes.nombre_cliente')
                     ->orderBy('reservas.id','DESC')
                     ->get();
 
@@ -45,10 +45,9 @@ class ReservasController extends Controller
 	public function create()
 	{
         $lista_habitaciones = DB::table('habitaciones')
-                            ->where('estado','desocupada')
-                            ->orderBy('valor')
-                            ->lists('valor', 'id');
-
+                            ->where('id_estado','2')
+                            ->orderBy('numero')
+                            ->lists('numero', 'id');
 
 		$lista_clientes = DB::table('clientes')
                     ->orderBy('rut_cliente')
@@ -61,6 +60,9 @@ class ReservasController extends Controller
 
 	public function store(ReservaRequest $request)
 	{
+
+
+
 		$reservas = new Reserva($request->all());
 		$reservas->id_us = \Auth::user()->id;
 
@@ -80,9 +82,9 @@ class ReservasController extends Controller
         $reservas = Reserva::find($id);
 
         $lista_habitaciones = DB::table('habitaciones')
-                            ->where('estado','desocupada')
-                            ->orderBy('valor')
-                            ->lists('valor', 'id');
+                            ->where('id_estado','2')
+                            ->orderBy('numero')
+                            ->lists('numero', 'id');
 
         $lista_clientes = DB::table('clientes')
                          ->orderBy('rut_cliente')

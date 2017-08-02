@@ -7,20 +7,20 @@
 	{!! Form::open(['route' => 'admin.reservas.store', 'method' => 'POST']) !!}
 
 	<p></p>
-	{!! Form::label('id_ha', 'Valor Habitación') !!}
-	{!! Form::select('id_ha', [$lista_habitaciones], null, ['class' => 'form-control', 'required', 'placeholder' => 'Valor Habitación']) !!}
+	{!! Form::label('id_ha', 'Número Habitación') !!}
+	{!! Form::select('id_ha', [$lista_habitaciones], null, ['class' => 'form-control', 'required', 'placeholder' => 'Número Habitación']) !!}
 
 	<p></p>
 	{!! Form::label('id_cl', 'RUT Cliente') !!}
 	{!! Form::select('id_cl', [$lista_clientes], null, ['class' => 'form-control', 'required', 'placeholder' => 'Selecione RUT']) !!}
 
 	<p></p>
-	{!! Form::label('reserva_comienza', 'Fecha Inicio') !!}
-	{!! Form::date('reserva_comienza', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
+	{!! Form::label('checkin', 'Fecha Inicio') !!}
+	{!! Form::date('checkin', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
 
 	<p></p>
-	{!! Form::label('reserva_termina', 'Fecha Termina') !!}
-	{!! Form::date('reserva_termina', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
+	{!! Form::label('checkout', 'Fecha Termina') !!}
+	{!! Form::date('checkout', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
 
 	<p></p>
 	<div align="center">

@@ -23,7 +23,7 @@ class HabitacionesController extends Controller
                     ->join('estadohabitaciones', 'estadohabitaciones.id', '=', 'habitaciones.id_estado')
 
                     ->select('habitaciones.*', 'tipohabitaciones.descripcion', 'tipohabitaciones.caracteristicas', 'tipohabitaciones.valor', 'tipohabitaciones.type', 'estadohabitaciones.estado')
-                    ->orderBy('habitaciones.id','ASC')
+                    ->orderBy('habitaciones.numero','ASC')
                     ->get();
 
         return view('admin.habitaciones.index')->with('habitaciones', $habitaciones);

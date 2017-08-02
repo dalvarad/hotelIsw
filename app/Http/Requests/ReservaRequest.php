@@ -23,8 +23,8 @@ class ReservaRequest extends Request
         return [
             'id_ha'             => 'required',
             'id_cl'             => 'required',
-            'reserva_comienza'  => "required|after:$date",
-            'reserva_termina'   => 'required|after:reserva_comienza'            
+            'checkin'  => "required|after:$date",
+            'checkout'   => 'required|after:reserva_comienza'            
         ];
     }
 }

@@ -13,9 +13,8 @@
         <thead>
             <th>Numero de Reserva</th>
             <th>Recepcionista</th>
-            <th>Habitación</th>
             <th>Cliente</th>
-            <th>Valor</th>
+            <th>Habitación</th>
             <th>Check-In</th>
             <th>Check-Out</th>
             <th>Acción</th>
@@ -25,11 +24,10 @@
                 <tr>
                     <td>{{$reserva->id}}</td>
                     <td>{{$reserva->name}}</td>
-                    <td>{{$reserva->id_ha}}</td>
                     <td>{{$reserva->nombre_cliente}}</td>                    
-                    <td>{{$reserva->valor}}</td>
-                    <td>{{$reserva->reserva_comienza}}</td>
-                    <td>{{$reserva->reserva_termina}}</td>
+                    <td>{{$reserva->numero}}</td>
+                    <td>{{$reserva->checkin}}</td>
+                    <td>{{$reserva->checkout}}</td>
                     <td>
 	                    <a href="{{ route('admin.reservas.edit', $reserva->id) }}" class="btn btn-warning">
 	                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>

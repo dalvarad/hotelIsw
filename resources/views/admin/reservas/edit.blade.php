@@ -7,12 +7,12 @@
 	{!! Form::open(['route' => ['admin.reservas.update', $reservas], 'method' => 'PUT']) !!}
 
 	<p></p>
-	{!! Form::label('id_ha', 'Valor Habitación') !!}
-	{!! Form::select('id_ha', [$lista_habitaciones], null, ['class' => 'form-control', 'required', 'placeholder' => 'Valor Habitación']) !!}
+	{!! Form::label('id_ha', 'Número Habitación') !!}
+	{!! Form::select('id_ha', [$lista_habitaciones], $reservas->id_ha, ['class' => 'form-control', 'required', 'placeholder' => 'Número Habitación']) !!}
 
 	<p></p>
-	{!! Form::label('reserva_termina', 'Fecha Termina') !!}
-	{!! Form::date('reserva_termina', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
+	{!! Form::label('checkout', 'Fecha Termina') !!}
+	{!! Form::date('checkout', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
 
 	<p></p>
 	<div align="center">
