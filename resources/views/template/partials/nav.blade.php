@@ -14,16 +14,26 @@
             <ul class="nav navbar-nav navbar-center">
                 <li><a href="{{url('home')}}"><span class="icon-home3"></span> Inicio</a></li>
                 <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
-                <li><a href="{{url('admin/users')}}"><span class="icon-user">Usuarios</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="icon-user" aria-hidden="true"></span> Usuarios
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                             <a href="{{url('admin/users')}}">Usuarios</a>
+                            <a href="{{url('admin/tipo')}}">Tipo Usuarios</a>                            
+                        </li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="icon-briefcase" aria-hidden="true"></span> Habitaciones
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{url('admin/habitaciones')}}">Habitacion</a>
-                            <a href="{{url('admin/tipohabitaciones')}}">Tipo</a>
-                            <a href="{{url('admin/estadohabitaciones')}}">Estado</a>
+                            <a href="{{url('admin/habitaciones')}}">Habitación</a>
+                            <a href="{{url('admin/tipohabitaciones')}}">Tipo Habitación</a>
+                            <a href="{{url('admin/estadohabitaciones')}}">Estado Habitación</a>
                             
                         </li>
                     </ul>

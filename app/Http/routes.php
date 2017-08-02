@@ -40,15 +40,15 @@ Route::get('contacto', function (){
 	return view('contacto/index');
 });
 
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     
 	Route::get('/', ['as' => 'admin.index', function (){
 		return view('welcome');
-    Route::resource('tipo','TipoController');
+
 	}]);
 
-
-
+       
 	/*rutas clientes*/
 	Route::resource('clientes','ClienteController');
 	Route::get('clientes/{id}/destroy',[
@@ -67,6 +67,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		'uses' => 'UsersController@destroy',
 		'as' => 'admin.users.destroy'
 	]);
+
+ 	/*ruta tipo usuario*/ 
+    Route::resource('tipo','TipoController');
+	Route::get('tipo/{id}/destroy', [
+		'uses' => 'TipoController@destroy',
+		'as' => 'admin.tipo.destroy'
+	]);   
 
 /*----------------------------------------------------------------------------------------------*/
 	/*rutas Datos de habitaciones*/
