@@ -18,13 +18,13 @@ class ReservaRequest extends Request
     public function rules()
     {
 
-        $date = Carbon::now()->subDay(2)->format('d-m-Y');        
+        $date = Carbon::now()->subDay(2)->format('Y-m-d');    
 
         return [
             'id_ha'             => 'required',
             'id_cl'             => 'required',
             'checkin'  => "required|after:$date",
-            'checkout'   => 'required|after:reserva_comienza'            
+            'checkout'   => 'required|after:checkin'            
         ];
     }
 }

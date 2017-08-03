@@ -13,14 +13,14 @@
 	<p></p>
 	{!! Form::label('id_cl', 'RUT Cliente') !!}
 	{!! Form::select('id_cl', [$lista_clientes], null, ['class' => 'form-control', 'required', 'placeholder' => 'Selecione RUT']) !!}
-
+	
 	<p></p>
 	{!! Form::label('checkin', 'Fecha Inicio') !!}
-	{!! Form::date('checkin', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
-
+	{!! Form::text('checkin', null, ['class' => 'form-control', 'required']) !!}
+	
 	<p></p>
 	{!! Form::label('checkout', 'Fecha Termina') !!}
-	{!! Form::date('checkout', \Carbon\Carbon::now(), ['class' => 'form-control', 'required']) !!}
+	{!! Form::text('checkout', null,['class' => 'form-control', 'required']) !!}
 
 	<p></p>
 	<div align="center">
@@ -28,5 +28,12 @@
 	</div>
 
 	{!! Form::close() !!}
-
 @endsection	
+
+@section('js')
+	<script>
+		jQuery('#checkin').datetimepicker();
+		jQuery('#checkout').datetimepicker();
+	</script>
+
+@endsection

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{asset ('estilos/plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset ('estilos/barra/icoMoon/icono/icono.css') }}">
     <link rel="stylesheet" href="{{ asset ('estilos/barra/icoMoon/usuario/usuario.css') }}">
+    <link rel="stylesheet" href="{{asset ('estilos/plugins/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset ('datetimepicker/jquery.datetimepicker.css')}}"/ >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
@@ -61,6 +63,10 @@
         
         <script src="{{asset ('estilos/plugins/jquery-3.2.1.js')}}"></script>
         <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.js')}}"></script> 
-        <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.min.js')}}"></script> 
+        <script src="{{asset ('estilos/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset ('datetimepicker/jquery.js')}}"></script>
+        <script src="{{asset ('datetimepicker/build/jquery.datetimepicker.full.min.js')}}"></script>
+
+        @yield('js')
     </body>
 </html>

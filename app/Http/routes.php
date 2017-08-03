@@ -11,9 +11,15 @@
 |
 */
 
+Route::get('/date', function () {
+    return view('date');
+});
+
 Route::get('/', function () {
     return view('inicio/index');
 });
+
+
 
 Route::get('quienessomos', function (){
 	return view('quienessomos/index');
