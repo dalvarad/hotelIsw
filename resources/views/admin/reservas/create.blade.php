@@ -32,8 +32,24 @@
 
 @section('js')
 	<script>
-		jQuery('#checkin').datetimepicker();
-		jQuery('#checkout').datetimepicker();
+		jQuery(function(){
+ 			jQuery('#checkin').datetimepicker({
+  				format:'d/m/Y H:i',
+  				onShow:function( ct ){
+  					this.setOptions({
+  						maxDate:jQuery('#checkout').val()?jQuery('#checkout').val():false
+  					})
+  				},
+ 			});
+ 			jQuery('#checkout').datetimepicker({
+  				format:'d/m/Y H:i',
+  				onShow:function( ct ){
+  					this.setOptions({
+  				  		minDate:jQuery('#checkin').val()?jQuery('#checkin').val():false
+  				 	})
+ 				},
+			});
+		});
 	</script>
 
 @endsection

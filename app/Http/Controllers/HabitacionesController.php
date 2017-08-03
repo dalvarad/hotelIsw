@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Habitacion;
+use App\Tipohabitacion;
 use Illuminate\Support\Facades\Session;
 use DB;
 
@@ -122,6 +123,7 @@ class HabitacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $habitacion = Habitacion::find($id);
@@ -129,5 +131,18 @@ class HabitacionesController extends Controller
 
         Session::flash('message_danger', "Se ha eliminado la habitacion $habitacion->numero Exitosamente!");
         return redirect(route('admin.habitaciones.index'));
+    }
+
+    public function mostrar($id)
+    {
+        /*$habitacion = Habitacion::find($id);*/
+
+        $habitacion = Habitacion::find($id);
+        $id = $habitacion->id_tipo;
+
+        $tipo = Tipohabitacion::find($id);
+
+
+        return view('habitaciones.mostrar')->with('habitacion',$habitacion)->with('tipo',$tipo);
     }
 }

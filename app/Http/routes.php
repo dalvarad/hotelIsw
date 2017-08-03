@@ -34,6 +34,11 @@ Route::get('habitaciones',[
 	'uses' => 'DatosController@index' 
 ]);
 
+Route::get('habitaciones/{id}/mostrar',[
+		'uses' =>'HabitacionesController@mostrar',
+		'as' => 'habitaciones.mostrar'
+]);
+
 /*Generador PDF*/
 Route::get('pdf',function(){
 		$users = App\User::all();

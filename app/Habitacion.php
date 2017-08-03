@@ -17,12 +17,5 @@ class Habitacion extends Model
    public function tipohabitacion(){
    		return $this->belongsTo('App\Tipohabitacion');
    }
-
-/*
-   public function scopeSearch($query, $tipo_de_habitacion){
-
-		return $query->where(, 'LIKE', "%$tipo_de_habitacion%");
-	}
-*/
 	
 }

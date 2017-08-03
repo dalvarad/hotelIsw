@@ -66,7 +66,18 @@ class ReservasController extends Controller
 		$reservas = new Reserva($request->all());
 		$reservas->id_us = \Auth::user()->id;
 
-		$reservas->save();
+        $id = $reservas->id_ha;
+        $habitacion = Habitacion::find($id);
+        /*$ocupada = 1;*/
+
+        /*fill(array('fieldname1' => 'value', 'fieldname2' => 'value'));*/
+
+        $reservas->save();
+
+
+        $habitacion->fill(array('id_estado' => '1'));
+        $habitacion->save();
+        
 
 		Session::flash('message_success', "Se ha registrado la reserva Nº $reservas->id Existosamente!");
         return redirect(route('admin.reservas.index'));
