@@ -72,35 +72,40 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		return $pdf->download('clientes.pdf');
 	});
 
-	/*rutas users*/
-	Route::resource('users','UsersController');
-	Route::get('users/{id}/destroy', [
-		'uses' => 'UsersController@destroy',
-		'as' => 'admin.users.destroy'
-	]);
+	Route::group(['middleware' => 'admin'], function(){
 
- 	/*ruta tipo usuario*/ 
-    Route::resource('tipo','TipoController');
-	Route::get('tipo/{id}/destroy', [
-		'uses' => 'TipoController@destroy',
-		'as' => 'admin.tipo.destroy'
-	]);   
+		/*rutas users*/
+		Route::resource('users','UsersController');
+		Route::get('users/{id}/destroy', [
+			'uses' => 'UsersController@destroy',
+			'as' => 'admin.users.destroy'
+		]);
 
+	 	/*ruta tipo usuario*/ 
+	    Route::resource('tipo','TipoController');
+		Route::get('tipo/{id}/destroy', [
+			'uses' => 'TipoController@destroy',
+			'as' => 'admin.tipo.destroy'
+		]);  
+
+	}); 
 /*----------------------------------------------------------------------------------------------*/
-	/*rutas Datos de habitaciones*/
-	/*rutas tipo de habitaciones*/
-	Route::resource('tipohabitaciones','TipohabController');
-	Route::get('tipohabitaciones/{id}/destroy', [
-		'uses' => 'TipohabController@destroy',
-		'as' => 'admin.tipohabitaciones.destroy'
-	]);
+	Route::group(['middleware' => 'admin'], function(){
+		/*rutas Datos de habitaciones*/
+		/*rutas tipo de habitaciones*/
+		Route::resource('tipohabitaciones','TipohabController');
+		Route::get('tipohabitaciones/{id}/destroy', [
+			'uses' => 'TipohabController@destroy',
+			'as' => 'admin.tipohabitaciones.destroy'
+		]);
 
-	/*rutas estado de habitaciones*/
-	Route::resource('estadohabitaciones','EsthabController');
-	Route::get('estadohabitaciones/{id}/destroy', [
-		'uses' => 'EsthabController@destroy',
-		'as' => 'admin.estadohabitaciones.destroy'
-	]);
+		/*rutas estado de habitaciones*/
+		Route::resource('estadohabitaciones','EsthabController');
+		Route::get('estadohabitaciones/{id}/destroy', [
+			'uses' => 'EsthabController@destroy',
+			'as' => 'admin.estadohabitaciones.destroy'
+		]);
+	}); 
 
 	/*rutas habitaciones*/
 	Route::resource('habitaciones','HabitacionesController');
@@ -109,6 +114,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		'as' => 'admin.habitaciones.destroy'
 	]);
 	/*fin ruta de habitaciones*/
+	
 /*----------------------------------------------------------------------------------------------*/
 
 	/*rutas reservas*/

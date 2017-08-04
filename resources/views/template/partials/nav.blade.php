@@ -14,17 +14,19 @@
             <ul class="nav navbar-nav navbar-center">
                 <li><a href="{{url('home')}}"><span class="icon-home3"></span> Inicio</a></li>
                 <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
-                <li class="dropdown">
-                    <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="icon-user" aria-hidden="true"></span> Usuarios
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                             <a href="{{url('admin/users')}}">Usuarios</a>
-                            <a href="{{url('admin/tipo')}}">Tipo Usuarios</a>                            
-                        </li>
-                    </ul>
-                </li>
+                 @if(Auth::user()->type ==1)
+                    <li class="dropdown">
+                        <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="icon-user" aria-hidden="true"></span> Usuarios
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                 <a href="{{url('admin/users')}}">Usuarios</a>
+                                <a href="{{url('admin/tipo')}}">Tipo Usuarios</a>                            
+                            </li>
+                        </ul>
+                    </li>
+                @endif
                 <li class="dropdown">
                     <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="icon-briefcase" aria-hidden="true"></span> Habitaciones
@@ -32,8 +34,10 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="{{url('admin/habitaciones')}}">Habitación</a>
-                            <a href="{{url('admin/tipohabitaciones')}}">Tipo Habitación</a>
-                            <a href="{{url('admin/estadohabitaciones')}}">Estado Habitación</a>
+                             @if(Auth::user()->type ==1)
+                                <a href="{{url('admin/tipohabitaciones')}}">Tipo Habitación</a>
+                                <a href="{{url('admin/estadohabitaciones')}}">Estado Habitación</a>
+                            @endif
                             
                         </li>
                     </ul>

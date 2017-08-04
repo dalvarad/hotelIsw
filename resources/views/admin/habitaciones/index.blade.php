@@ -3,9 +3,11 @@
 @section('title','Listado de Habitaciones')
 
 @section('contenido')
-	<div align="center">
-		<a href="{{ route('admin.habitaciones.create') }}" class="btn btn-info"> Registrar Habitación</a>
-	</div>
+    @if(Auth::user()->type ==1)
+    	<div align="center">
+    		<a href="{{ route('admin.habitaciones.create') }}" class="btn btn-info"> Registrar Habitación</a>
+    	</div>
+    @endif
 	<p></p>
 
 	<table class="table table-stripped">
@@ -25,14 +27,16 @@
                     <td>{{$habitacion->type}}</td>
                     <td>${{$habitacion->valor}}.000</td>
                     <td>{{$habitacion->estado}}</td>
-                    <td>
-                        <a href="#" class="btn btn-info">
-                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-	                    <a href="{{ route('admin.habitaciones.edit', $habitacion->id) }}" class="btn btn-warning">
-	                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
-	                    <a href="{{ route('admin.habitaciones.destroy', $habitacion->id) }}" onclick="return confirm('¿Está seguro que desea eliminar la habitación?')" class="btn btn-danger">
-	                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
-	               </td>
+                    @if(Auth::user()->type ==1)
+                        <td>
+                            <a href="#" class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+    	                    <a href="{{ route('admin.habitaciones.edit', $habitacion->id) }}" class="btn btn-warning">
+    	                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+    	                    <a href="{{ route('admin.habitaciones.destroy', $habitacion->id) }}" onclick="return confirm('¿Está seguro que desea eliminar la habitación?')" class="btn btn-danger">
+    	                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+    	               </td>
+                   @endif
                 </tr>
             @endforeach
         </tbody>

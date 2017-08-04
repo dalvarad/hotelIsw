@@ -16,6 +16,12 @@ class HabitacionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /* middleware utilizado desde el controlador */
+    public function __construct()
+    {
+        $this->middleware('admin', ['only' => ['create','store', 'edit', 'update', 'destroy']]);
+    }
+
     public function index()
     {
         $habitaciones = DB::table('habitaciones')
