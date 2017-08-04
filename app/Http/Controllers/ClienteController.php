@@ -23,7 +23,6 @@ class ClienteController extends Controller
     	return view('admin.clientes.create');
     }
 
-
     public function store(Request $request)
     {
 

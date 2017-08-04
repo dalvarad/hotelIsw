@@ -4,6 +4,10 @@
 
 @section('contenido')
 
+	<div align="right">
+		<a href="{{ route('admin.crearcliente.create') }}" class="btn btn-info"> Registrar Cliente</a>
+	</div>
+
 	{!! Form::open(['route' => 'admin.reservas.store', 'method' => 'POST']) !!}
 
 	<p></p>

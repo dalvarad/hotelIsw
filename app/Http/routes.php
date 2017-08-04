@@ -66,6 +66,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 		'uses' =>'ClienteController@destroy',
 		'as' => 'admin.clientes.destroy'
 	]);
+	Route::resource('crearcliente', 'RegistroController');
+
 	Route::get('pdfclientes',function(){
 		$cliente = App\Cliente::all();
 		$pdf = PDF::loadView('admin.clientes.pdf', ['cliente' => $cliente]);

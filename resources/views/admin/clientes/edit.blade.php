@@ -12,7 +12,7 @@
 
 	<p></p>
 	{!! Form::label('hora_termino_real_cl', 'Hora de salida real del cliente') !!}
-	{!! Form::datetime('hora_termino_real_cl', $cliente->hora_termino_real_cl, ['class' => 'form-control', 'placeholder' =>'AAAA-M-D 23:59:00']) !!}
+	{!! Form::text('hora_termino_real_cl', $cliente->hora_termino_real_cl, ['class' => 'form-control', 'placeholder' =>'AAAA-M-D 23:59:00']) !!}
 
      
 	<p></p>
@@ -23,5 +23,14 @@
 
 
 	{!! Form::close() !!}
+
+@endsection
+
+@section('js')
+	<script>
+		jQuery(function(){
+ 			jQuery('#hora_termino_real_cl').datetimepicker();
+		});
+	</script>
 
 @endsection

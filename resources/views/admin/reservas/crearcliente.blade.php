@@ -3,7 +3,7 @@
 @section('title', 'Crear Cliente')
 
 @section('contenido')
-	{!! Form::open(['route' => 'admin.clientes.store', 'method' => 'POST']) !!}
+	{!! Form::open(['route' => 'admin.crearcliente.store', 'method' => 'POST']) !!}
 	
 	{!! Form::label('nombre_cliente', 'Nombre del Cliente') !!}
 		{!! Form::text('nombre_cliente', null, ['class' => 'form-control', 'placeholder' => 'Ramón Ramírez Roman', 'required']) !!}

@@ -59,10 +59,7 @@ class ReservasController extends Controller
 	}
 
 	public function store(ReservaRequest $request)
-	{
-
-
-
+	{  
 		$reservas = new Reserva($request->all());
 		$reservas->id_us = \Auth::user()->id;
 
@@ -101,6 +98,11 @@ class ReservasController extends Controller
                          ->orderBy('rut_cliente')
                          ->lists('rut_cliente', 'id');
 
+        /*Marcar habitación como desocupada*/
+        $id = $reservas->id_ha;
+        $habitacion = Habitacion::find($id);
+        $habitacion->fill(array('id_estado' => '2'));
+        $habitacion->save();
 
         
         return view('admin.reservas.edit')->with('reservas', $reservas)->with('lista_habitaciones', $lista_habitaciones)->with('lista_clientes', $lista_clientes);
@@ -109,8 +111,15 @@ class ReservasController extends Controller
     public function update(Request $request, $id)
     {
         $reservas = Reserva::find($id);
+        $id = $reservas->id_ha;
+
+        $habitacion = Habitacion::find($id);
+
         $reservas->fill($request->all());
         $reservas->save();
+
+        $habitacion->fill(array('id_estado' => '1'));
+        $habitacion->save();
 
         Session::flash('message_success', "Se ha modificado la reserva $reservas->id Exitosamente!");
         return redirect(route('admin.reservas.index'));
