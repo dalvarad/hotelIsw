@@ -7,6 +7,7 @@
             <br>
             <span>Concepción  {{ date('Y') }}</span>
             <br>
+            <span>Contacto Hotel Acuarella - Gabriel Toro 212 Talcuhuano - Teléfono 41 222 48 65</span>
         </p>
     </div>
 </footer>

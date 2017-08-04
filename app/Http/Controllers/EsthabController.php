@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\EstadohabRequest;
 use App\Estadohabitacion;
 use Illuminate\Support\Facades\Session;
 
@@ -21,7 +22,7 @@ class EsthabController extends Controller
     	return view('admin.estadohabitaciones.create');
     }
 
-    public function store(Request $request)
+    public function store(EstadohabRequest $request)
     {
     	$estado = new Estadohabitacion($request->all());
         $estado->save();
@@ -41,7 +42,7 @@ class EsthabController extends Controller
         return view('admin.estadohabitaciones.edit')->with('estado', $estado);
     }
 
-    public function update(Request $request, $id)
+    public function update(EstadohabRequest $request, $id)
     {
     	$estado = Estadohabitacion::find($id);
     

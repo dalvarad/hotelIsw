@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\ReservaRequest;
+use App\Http\Requests\ReservasRequest;
 use App\Reserva;
 use App\User;
 use App\Habitacion;
@@ -58,7 +58,7 @@ class ReservasController extends Controller
         return view('admin.reservas.create')->with('lista_habitaciones', $lista_habitaciones)->with('lista_clientes',$lista_clientes);
 	}
 
-	public function store(ReservaRequest $request)
+	public function store(ReservasRequest $request)
 	{  
 		$reservas = new Reserva($request->all());
 		$reservas->id_us = \Auth::user()->id;
@@ -108,7 +108,7 @@ class ReservasController extends Controller
         return view('admin.reservas.edit')->with('reservas', $reservas)->with('lista_habitaciones', $lista_habitaciones)->with('lista_clientes', $lista_clientes);
     }
 
-    public function update(Request $request, $id)
+    public function update(ReservasRequest $request, $id)
     {
         $reservas = Reserva::find($id);
         $id = $reservas->id_ha;

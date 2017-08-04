@@ -46,7 +46,7 @@ class ClienteController extends Controller
         return view('admin.clientes.edit')->with('cliente', $cliente);   
     }
 
-    public function update(Request $request, $id){
+    public function update(ClienteRequest $request, $id){
         
         $cliente = Cliente::find($id);
     

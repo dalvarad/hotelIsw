@@ -17,16 +17,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'rut'       => Rut::set(rand(1000000, 25000000))->fix()->format(Rut::FORMAT_WITH_DASH),
         'email'     => $faker->email,
         'password'  => bcrypt(str_random(10)),
-        'type'      => $faker->randomElement($array = array ('recepcionista','administrador'))
+        'type'      => $faker->randomElement($array = array ('1','2'))
     ];
 });
 
 $factory->define(App\Habitacion::class, function (Faker\Generator $faker) {
  
     return [
-        'valor'                 => $faker->numberBetween($min = 5000, $max = 250000),
-        'estado'                => $faker->randomElement($array = array ('ocupada','desocupada')),
-        'tipo_de_habitacion'    => $faker->randomElement($array = array ('single','doble','triple')) 
+        'id_tipo'                 => $faker->randomElement($array = array('1', '2', '3')),
+        'id_estado'             => $faker->randomElement($array = array('1', '2', '3')),
+        'numero'                => $faker->numberBetween($min = 1, $max = 150),
     ];
 
 });

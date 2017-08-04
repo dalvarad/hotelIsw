@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tipo;
 use App\Http\Requests;
+use App\Http\Requests\TipousuarioRequest;
 use Illuminate\Support\Facades\Session;
 
 class TipoController extends Controller
@@ -20,7 +21,7 @@ class TipoController extends Controller
     	return view('admin.tipo.create');
     }
 
-    public function store(Request $request)
+    public function store(TipousuarioRequest $request)
     {
     	$tipos = new Tipo($request->all());
         $tipos->save();
@@ -39,7 +40,7 @@ class TipoController extends Controller
         return view('admin.tipo.edit')->with('tipos', $tipos);
     }
 
-    public function update(Request $request, $id)
+    public function update(TipousuarioRequest $request, $id)
     {
         $tipos = Tipo::find($id);
     

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\TipohabitacionesRequest;
 use App\Tipohabitacion;
 use Illuminate\Support\Facades\Session;
 
@@ -21,7 +22,7 @@ class TipohabController extends Controller
     	return view('admin.tipohabitacion.create');
     }
 
-    public function store(Request $request)
+    public function store(TipohabitacionesRequest $request)
     {
     	$tipo = new Tipohabitacion($request->all());
         $tipo->save();
@@ -41,7 +42,7 @@ class TipohabController extends Controller
         return view('admin.tipohabitacion.edit')->with('tipo', $tipo);
     }
 
-    public function update(Request $request, $id)
+    public function update(TipohabitacionesRequest $request, $id)
     {
     	$tipo = Tipohabitacion::find($id);
     

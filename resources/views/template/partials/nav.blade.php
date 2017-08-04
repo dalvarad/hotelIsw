@@ -13,7 +13,7 @@
      @if(Auth::user())
             <ul class="nav navbar-nav navbar-center">
                 <li><a href="{{url('home')}}"><span class="icon-home3"></span> Inicio</a></li>
-                <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
+                <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span>otel</a></li>
                  @if(Auth::user()->type ==1)
                     <li class="dropdown">
                         <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -43,13 +43,13 @@
                     </ul>
                 </li>
                 <li><a href="{{url('admin/reservas')}}"><span class="glyphicon glyphicon-time"></span> Reservas</a></li>
-                <li><a href="{{url('admin/clientes')}}"><span class="icon-user-tie">Clientes</span></a></li>
+                <li><a href="{{url('admin/clientes')}}"><span class="icon-user-tie"></span>Clientes</a></li>
                 <li><a href="{{url('quienessomos')}}"><span class="icon-earth"></span> ¿Quiénes somos?</a></li>    
             </ul>
       @else
       <ul class="nav navbar-nav">
         <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-        <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span> Hotel</a></li>
+        <li><a href="{{url('hotel')}}"><span class="glyphicon glyphicon-header"></span>otel</a></li>
         <li><a href="{{url('habitaciones')}}"><span class="glyphicon glyphicon-bed"></span> Habitaciones</a></li>
         <li><a href="{{url('quienessomos')}}"><span class="glyphicon glyphicon-sunglasses"></span> ¿Quiénes somos?</a></li>
       </ul>

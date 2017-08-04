@@ -132,7 +132,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
                     ->join('habitaciones', 'habitaciones.id', '=', 'reservas.id_ha')
                     ->join('clientes', 'clientes.id', '=', 'reservas.id_cl')
 
-                    ->select('reservas.*', 'users.name', 'habitaciones.valor', 'clientes.nombre_cliente')
+                    ->select('reservas.*', 'users.name', 'habitaciones.numero', 'clientes.nombre_cliente')
                     ->orderBy('reservas.id','DESC')
                     ->get();
 		$pdf = PDF::loadView('admin.reservas.pdf', ['reservas' => $reservas]);

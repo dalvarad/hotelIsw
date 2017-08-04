@@ -4,7 +4,8 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ClienteRequest extends Request
+
+class TipohabitacionesRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,10 @@ class ClienteRequest extends Request
     public function rules()
     {
         return [
-            'nombre_cliente' => 'min:4|max:120|alpha|required',
-            'rut_cliente' => 'max:12|required|unique:clientes|cl_rut'
+            'valor' => 'max:900|required|numeric',
+            'caracteristicas' => 'min:10|max:500|required|',
+            'descripcion' => 'min:6|max:500|required',
+            'type' => 'alpha|unique:tipohabitaciones|required'
         ];
     }
 }

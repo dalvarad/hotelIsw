@@ -5,13 +5,13 @@
 <body>
   <header>
   <link rel="stylesheet" href="pdfStyle.css">
-    <h1>Hotel Acuarela</h1>
+    <h1>Hotel Acuarella</h1>
     <h2>Clientes</h2>
   </header>
   <footer>
    
          <p class="izq">
-              Hotel Acuarela
+              Hotel Acuarella
          </p>
           <p class="page">
            	 Página

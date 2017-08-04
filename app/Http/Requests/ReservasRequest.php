@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ClienteRequest extends Request
+class ReservasRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,10 @@ class ClienteRequest extends Request
     public function rules()
     {
         return [
-            'nombre_cliente' => 'min:4|max:120|alpha|required',
-            'rut_cliente' => 'max:12|required|unique:clientes|cl_rut'
+            'id_ha' => 'required',
+            'id_cl' => 'required',
+            'checkin' => 'required',
+            'checkout' => 'required'
         ];
     }
 }

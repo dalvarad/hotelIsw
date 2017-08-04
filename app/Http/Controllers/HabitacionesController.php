@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\HabitacionRequest;
 use App\Habitacion;
 use App\Tipohabitacion;
 use Illuminate\Support\Facades\Session;
@@ -63,7 +64,7 @@ class HabitacionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HabitacionRequest $request)
     {
         $habitacion = new Habitacion($request->all());
 
@@ -113,7 +114,7 @@ class HabitacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HabitacionRequest $request, $id)
     {
         $habitacion = Habitacion::find($id);
         $habitacion->fill($request->all());

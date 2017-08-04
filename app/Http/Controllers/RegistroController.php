@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ClienteRequest;
 use App\Cliente;
 use Freshwork\ChileanBundle\Rut;
 use Illuminate\Support\Facades\Session;
@@ -21,7 +22,7 @@ class RegistroController extends Controller
     	return view('admin.reservas.crearcliente');
     }
 
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
     	$cliente = new Cliente($request->all());
         $cliente->rut_cliente = RUT::parse($request->rut_cliente)->format(RUT::FORMAT_WITH_DASH);
