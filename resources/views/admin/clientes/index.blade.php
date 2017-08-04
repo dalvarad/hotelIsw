@@ -6,6 +6,13 @@
 
 	<a href="{{ route('admin.clientes.create') }}" class="btn btn-info">Registrar nuevo cliente</a>
 	<a href="{{ url('admin/pdfclientes') }}" class="btn btn-danger"><span class="glyphicon glyphicon-save-file">pdf</span></a>
+	{!! Form::open(['route'=>'admin.clientes.index', 'method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
+		<div class = "input-group">
+			{!! Form::text('nombre_cliente',null,['class'=>'form-control','placelholder'=>'Buscar cliente','aria-describedby'=>'search']) !!}
+			<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+		</div>
+		
+	{!! Form::close() !!}
 	<p></p>
 	<table class="table table-striped">
 		<thead>

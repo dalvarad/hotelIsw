@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Session;
 
 class ClienteController extends Controller
 {
-	public function index()
+	public function index(Request $request)
     {
-    	$clientes = Cliente::orderBy('id', 'ASC')->paginate(5);
+        $clientes = Cliente::search($request->nombre_cliente)->orderBy('id', 'ASC')->paginate(5);
         return view('admin.clientes.index')->with('clientes', $clientes);
     }
 

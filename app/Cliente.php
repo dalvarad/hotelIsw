@@ -13,6 +13,9 @@ class Cliente extends Model
     public function reserva(){
     	return $this->hasMany('App\Reserva');
     }
+    public function scopeSearch($query,$nombre_cliente){
+    	return $query->where('nombre_cliente','LIKE',"%$nombre_cliente%");
+    }
 
 
 }
