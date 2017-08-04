@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use App\Http\Requests\ClienteRequest;
 use App\Cliente;
 use Freshwork\ChileanBundle\Rut;
 use Illuminate\Support\Facades\Session;
@@ -23,7 +23,7 @@ class ClienteController extends Controller
     	return view('admin.clientes.create');
     }
 
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
 
     	$cliente = new Cliente($request->all());
